@@ -1,21 +1,25 @@
 let myItems=document.querySelectorAll(".listItem");
+var myContainers=document.querySelector(".containerContent")
 
-function addClass (el)  {
-    el.classList.add("active")
-}
 window.onscroll=()=> {
     if (window.scrollY>400) {
+        myContainers.classList.add("container-right")
         let nb=0;
-        setInterval(()=> {
+        const inter = setInterval(()=> {
             myItems[nb].classList.add("active")
-            nb++
-        },1000)
+            nb++; 
+            nb>2 ? clearInterval(inter): inter
+        },500); 
+        
     }
     else {
         myItems.forEach(el=> {
-            el.classList.remove("active")
+            el.classList.remove("active"); 
+            myContainers.classList.remove("container-right")
         })
     }
+
+    
     
 }
 
